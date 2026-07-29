@@ -17,7 +17,7 @@
 
         body {
             margin: 0;
-            padding: 12px;
+            padding: 6px;
             background: #080a0f;
             background-image: radial-gradient(circle at 50% 0%, #111827 0%, #080a0f 80%);
             color: #00ffcc;
@@ -25,6 +25,7 @@
             display: flex;
             flex-direction: column;
             height: 100vh;
+            max-height: 100vh;
             overflow: hidden;
         }
 
@@ -32,13 +33,14 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 4px 12px 4px;
+            padding: 2px 4px;
             border-bottom: 1px solid rgba(0, 255, 204, 0.15);
-            margin-bottom: 12px;
+            margin-bottom: 4px;
+            flex-shrink: 0;
         }
 
         .app-title {
-            font-size: 16px;
+            font-size: 13px;
             font-weight: 800;
             color: #ffffff;
             letter-spacing: 0.5px;
@@ -50,39 +52,46 @@
             font-family: 'JetBrains Mono', monospace;
             font-size: 10px;
             color: #00ffcc;
-            opacity: 0.7;
+            opacity: 0.8;
         }
 
         .controls-wrapper {
             display: flex;
             flex-direction: column;
-            gap: 8px;
-            margin-bottom: 12px;
+            gap: 4px;
+            margin-bottom: 4px;
+            flex-shrink: 0;
         }
 
         .control-row {
             display: flex;
-            gap: 6px;
+            gap: 4px;
             align-items: center;
             justify-content: space-between;
             background: rgba(255, 255, 255, 0.03);
-            padding: 8px;
-            border-radius: 8px;
+            padding: 4px 6px;
+            border-radius: 6px;
             border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .actions-row {
+            flex-wrap: nowrap;
+            justify-content: space-between;
         }
 
         select, button.btn-bar {
             background: rgba(0, 255, 204, 0.05);
             color: #00ffcc;
             border: 1px solid rgba(0, 255, 204, 0.3);
-            padding: 8px 10px;
-            font-size: 11px;
-            border-radius: 6px;
+            padding: 5px 6px;
+            font-size: 10px;
+            border-radius: 5px;
             outline: none;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.2s ease;
             font-family: 'Inter', sans-serif;
+            min-height: 28px;
         }
 
         select {
@@ -94,24 +103,27 @@
         button.btn-bar:active, select:active, button.btn-bar.active {
             background: #00ffcc;
             color: #080a0f;
-            box-shadow: 0 0 12px rgba(0, 255, 204, 0.5);
+            box-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
         }
 
         .octave-group {
             display: flex;
             align-items: center;
             background: rgba(0, 0, 0, 0.3);
-            border-radius: 6px;
+            border-radius: 5px;
             border: 1px solid rgba(0, 255, 204, 0.2);
             overflow: hidden;
+            min-height: 28px;
         }
 
         .octave-group button {
             background: transparent;
             border: none;
             color: #00ffcc;
-            padding: 8px 10px;
+            padding: 4px 8px;
             font-weight: bold;
+            font-size: 11px;
+            cursor: pointer;
         }
 
         .octave-group button:active {
@@ -122,18 +134,18 @@
         .oct-display {
             font-family: 'JetBrains Mono', monospace;
             font-size: 10px;
-            padding: 0 6px;
-            min-width: 60px;
+            padding: 0 4px;
+            min-width: 50px;
             text-align: center;
         }
 
         .history-group {
             display: flex;
-            gap: 4px;
+            gap: 2px;
         }
 
         .btn-action {
-            flex: 1;
+            min-width: 44px;
         }
 
         .btn-save {
@@ -145,7 +157,7 @@
         .btn-save:active {
             background: #ff007f !important;
             color: #ffffff !important;
-            box-shadow: 0 0 15px rgba(255, 0, 127, 0.6) !important;
+            box-shadow: 0 0 12px rgba(255, 0, 127, 0.6) !important;
         }
 
         .btn-fx {
@@ -156,7 +168,7 @@
         .btn-fx.active {
             background: #bd00ff !important;
             color: #fff !important;
-            box-shadow: 0 0 15px rgba(189, 0, 255, 0.6) !important;
+            box-shadow: 0 0 12px rgba(189, 0, 255, 0.6) !important;
         }
 
         .btn-morph {
@@ -167,7 +179,7 @@
         .btn-morph.active {
             background: #ff8c00 !important;
             color: #080a0f !important;
-            box-shadow: 0 0 15px rgba(255, 140, 0, 0.7) !important;
+            box-shadow: 0 0 12px rgba(255, 140, 0, 0.7) !important;
         }
 
         .btn-seq {
@@ -178,81 +190,82 @@
         .btn-seq.active {
             background: #00ff78 !important;
             color: #080a0f !important;
-            box-shadow: 0 0 15px rgba(0, 255, 120, 0.7) !important;
+            box-shadow: 0 0 10px rgba(0, 255, 120, 0.7) !important;
         }
 
         .adsr-main-panel {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 8px;
+            gap: 4px;
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(0, 255, 204, 0.15);
-            border-radius: 8px;
-            padding: 10px;
-            margin-bottom: 12px;
+            border-radius: 6px;
+            padding: 5px;
+            margin-bottom: 4px;
+            flex-shrink: 0;
         }
 
         .adsr-control {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 6px;
+            gap: 2px;
         }
 
         .adsr-label {
-            font-size: 9px;
+            font-size: 8px;
             font-weight: 800;
             color: #ff007f;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
 
         input[type=range] {
             -webkit-appearance: none;
             width: 100%;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.12);
             height: 4px;
             border-radius: 2px;
             outline: none;
-            margin: 6px 0;
+            margin: 2px 0;
         }
 
         input[type=range]::-webkit-slider-thumb {
             -webkit-appearance: none;
-            width: 16px;
-            height: 16px;
+            width: 14px;
+            height: 14px;
             border-radius: 50%;
             background: #00ffcc;
             cursor: pointer;
-            box-shadow: 0 0 10px rgba(0, 255, 204, 0.6);
+            box-shadow: 0 0 6px rgba(0, 255, 204, 0.7);
             border: 2px solid #080a0f;
         }
 
         #seq-panel {
             display: none;
             grid-template-columns: repeat(8, 1fr);
-            gap: 4px;
+            gap: 3px;
             background: rgba(0, 255, 120, 0.03);
             border: 1px solid rgba(0, 255, 120, 0.3);
-            border-radius: 8px;
-            padding: 8px;
-            margin-bottom: 12px;
+            border-radius: 6px;
+            padding: 5px;
+            margin-bottom: 4px;
+            flex-shrink: 0;
         }
 
         .seq-step {
             background: rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(0, 255, 120, 0.2);
-            border-radius: 6px;
-            height: 52px;
+            border: 1px solid rgba(0, 255, 120, 0.25);
+            border-radius: 5px;
+            height: 36px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 10px;
+            font-size: 9px;
             color: #00ff78;
             cursor: pointer;
             text-align: center;
-            transition: all 0.1s ease;
         }
 
         .seq-step.rest-step {
@@ -265,45 +278,45 @@
             background: #00ff78;
             color: #080a0f;
             font-weight: bold;
-            box-shadow: 0 0 12px rgba(0, 255, 120, 0.8);
+            box-shadow: 0 0 8px rgba(0, 255, 120, 0.8);
             transform: scale(1.03);
         }
 
         .seq-step span {
-            font-size: 8px;
-            opacity: 0.7;
+            font-size: 7px;
+            opacity: 0.75;
         }
 
         .seq-step .vel-bar {
             width: 80%;
-            height: 3px;
+            height: 2px;
             background: rgba(0, 255, 120, 0.4);
-            margin-top: 4px;
+            margin-top: 2px;
             border-radius: 2px;
         }
 
         #xy {
             display: block;
             flex: 1;
-            min-height: 120px;
+            min-height: 35px;
             background: linear-gradient(135deg, rgba(0, 255, 204, 0.05) 0%, rgba(0, 0, 0, 0.4) 100%);
             border: 1px solid rgba(0, 255, 204, 0.3);
-            border-radius: 12px;
+            border-radius: 8px;
             position: relative;
             cursor: crosshair;
-            margin-bottom: 12px;
-            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8);
+            margin-bottom: 4px;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
             touch-action: none;
         }
 
         #xy::after {
             content: "X: CUTOFF  |  Y: FM INDEX + MORPH";
             position: absolute;
-            bottom: 10px;
-            left: 12px;
+            bottom: 3px;
+            left: 8px;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 10px;
-            color: rgba(0, 255, 204, 0.5);
+            font-size: 8px;
+            color: rgba(0, 255, 204, 0.6);
             pointer-events: none;
         }
 
@@ -311,64 +324,65 @@
             display: none;
             flex: 1;
             flex-direction: column;
-            margin-bottom: 12px;
-            min-height: 120px;
+            margin-bottom: 4px;
+            min-height: 60px;
+            overflow: hidden;
         }
 
         .rack-container {
             border: 1px solid #bd00ff;
-            border-radius: 12px;
-            padding: 12px;
+            border-radius: 8px;
+            padding: 6px;
             background: rgba(189, 0, 255, 0.05);
             width: 100%;
             height: 100%;
             overflow-y: auto;
-            box-shadow: inset 0 0 20px rgba(189, 0, 255, 0.05);
+            box-shadow: inset 0 0 10px rgba(189, 0, 255, 0.05);
         }
 
         .preset-container {
             border: 1px solid #ff007f;
-            border-radius: 12px;
-            padding: 12px;
+            border-radius: 8px;
+            padding: 6px;
             background: rgba(255, 0, 127, 0.05);
             width: 100%;
             height: 100%;
             overflow-y: auto;
-            box-shadow: inset 0 0 20px rgba(255, 0, 127, 0.05);
+            box-shadow: inset 0 0 10px rgba(255, 0, 127, 0.05);
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 4px;
         }
 
         .rack-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 12px;
+            margin-bottom: 4px;
         }
 
         .rack-title {
             font-weight: 800;
-            font-size: 12px;
+            font-size: 10px;
             color: #bd00ff;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
 
         .preset-title {
             font-weight: 800;
-            font-size: 12px;
+            font-size: 10px;
             color: #ff007f;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
 
         .btn-rnd-fx {
             background: rgba(189, 0, 255, 0.2);
             color: #e080ff;
             border: 1px solid #bd00ff;
-            padding: 6px 12px;
-            font-size: 10px;
+            padding: 3px 6px;
+            font-size: 9px;
             font-weight: bold;
-            border-radius: 6px;
+            border-radius: 4px;
             cursor: pointer;
         }
         .btn-rnd-fx:active {
@@ -379,45 +393,45 @@
         .rack-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 8px;
+            gap: 4px;
         }
 
         .fx-card {
             background: rgba(0, 0, 0, 0.4);
             border: 1px solid rgba(189, 0, 255, 0.2);
-            border-radius: 8px;
-            padding: 10px;
+            border-radius: 5px;
+            padding: 4px 6px;
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 2px;
         }
 
         .fx-card input[type=range]::-webkit-slider-thumb {
             background: #bd00ff;
-            box-shadow: 0 0 10px rgba(189, 0, 255, 0.6);
+            box-shadow: 0 0 5px rgba(189, 0, 255, 0.6);
         }
 
         .fx-title {
-            font-size: 10px;
+            font-size: 8px;
             font-weight: 800;
             color: #e080ff;
         }
 
         .time-grid {
             display: flex;
-            gap: 4px;
+            gap: 2px;
             flex-wrap: wrap;
         }
 
         .time-preset-btn {
             flex: 1;
-            min-width: 60px;
-            padding: 6px;
-            font-size: 9px;
+            min-width: 36px;
+            padding: 3px;
+            font-size: 8px;
             background: rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(189, 0, 255, 0.3);
             color: #e080ff;
-            border-radius: 4px;
+            border-radius: 3px;
             cursor: pointer;
             font-weight: 600;
         }
@@ -425,7 +439,7 @@
         .time-preset-btn.active {
             background: #bd00ff;
             color: #fff;
-            box-shadow: 0 0 8px rgba(189, 0, 255, 0.5);
+            box-shadow: 0 0 5px rgba(189, 0, 255, 0.5);
         }
 
         .preset-item {
@@ -434,25 +448,25 @@
             align-items: center;
             background: rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(255, 0, 127, 0.3);
-            padding: 10px 12px;
-            border-radius: 8px;
+            padding: 6px 8px;
+            border-radius: 5px;
             color: #fff;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 12px;
+            font-size: 10px;
         }
 
         .preset-actions {
             display: flex;
-            gap: 6px;
+            gap: 4px;
         }
 
         .btn-load-preset {
             background: rgba(0, 255, 204, 0.1);
             color: #00ffcc;
             border: 1px solid #00ffcc;
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-size: 10px;
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-size: 8px;
             cursor: pointer;
             font-weight: bold;
         }
@@ -462,9 +476,9 @@
             background: rgba(255, 0, 0, 0.1);
             color: #ff4444;
             border: 1px solid #ff4444;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 10px;
+            padding: 3px 5px;
+            border-radius: 3px;
+            font-size: 8px;
             cursor: pointer;
         }
         .btn-del-preset:active { background: #ff4444; color: #fff; }
@@ -472,29 +486,30 @@
         .keyboard-container {
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 3px;
             margin-top: auto;
+            flex-shrink: 0;
         }
 
         .keys-row {
             display: flex;
-            gap: 8px;
-            height: 65px;
+            gap: 3px;
+            height: 38px;
         }
 
         .key {
             flex: 1;
             background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(0, 255, 204, 0.2);
-            border-radius: 8px;
+            border: 1px solid rgba(0, 255, 204, 0.25);
+            border-radius: 5px;
             display: flex;
             justify-content: center;
             align-items: center;
             font-family: 'JetBrains Mono', monospace;
             font-weight: bold;
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.8);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.85);
+            box-shadow: 0 2px 3px rgba(0,0,0,0.3);
             transition: all 0.1s;
         }
 
@@ -505,25 +520,25 @@
         }
 
         .key.active {
-            background: rgba(0, 255, 204, 0.2);
+            background: rgba(0, 255, 204, 0.25);
             border-color: #00ffcc;
             color: #fff;
-            box-shadow: 0 0 15px rgba(0, 255, 204, 0.4), inset 0 0 10px rgba(0, 255, 204, 0.2);
-            transform: translateY(2px);
+            box-shadow: 0 0 10px rgba(0, 255, 204, 0.5), inset 0 0 6px rgba(0, 255, 204, 0.3);
+            transform: translateY(1px);
         }
         
         .key.root.active {
-            background: rgba(255, 0, 127, 0.2);
+            background: rgba(255, 0, 127, 0.25);
             border-color: #ff007f;
-            box-shadow: 0 0 15px rgba(255, 0, 127, 0.4);
+            box-shadow: 0 0 10px rgba(255, 0, 127, 0.5);
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="app-title">Neurobass Mono</div>
-        <div id="patch-info" class="patch-info">FM 1:1.0 | LFO: 3.0Hz</div>
+        <div class="app-title">Neurobass Mono + Sub + Noise</div>
+        <div id="patch-info" class="patch-info">FM 1:1.0 | SUB: ON | NOISE: ON</div>
     </header>
 
     <div class="controls-wrapper">
@@ -545,20 +560,20 @@
 
             <div class="octave-group">
                 <button onclick="changeOctave(-1)">-</button>
-                <div id="oct-display" class="oct-display">C1-C2</div>
+                <div id="oct-display" class="oct-display">C1-C3</div>
                 <button onclick="changeOctave(1)">+</button>
             </div>
         </div>
 
-        <div class="control-row">
-            <button class="btn-bar btn-action" onclick="generatePatch()">GENERATE</button>
+        <div class="control-row actions-row">
+            <button class="btn-bar btn-action" onclick="generatePatch()">GEN</button>
             
             <div class="history-group">
                 <button class="btn-bar" onclick="navigateHistory(-1)">&lt;</button>
                 <button class="btn-bar" onclick="navigateHistory(1)">&gt;</button>
             </div>
 
-            <button id="seqBtn" class="btn-bar btn-seq" onclick="toggleSequencer()">SEQ MUSICAL</button>
+            <button id="seqBtn" class="btn-bar btn-seq" onclick="toggleSequencer()">SEQ</button>
             <button id="fxBtn" class="btn-bar btn-fx" onclick="toggleFx()">FX</button>
             <button id="morphBtn" class="btn-bar btn-morph" onpointerdown="setMorph(true)" onpointerup="setMorph(false)" onpointerleave="setMorph(false)">MORPH</button>
             <button id="presetBtn" class="btn-bar btn-save" onclick="saveToPresetBank()">SAVE</button>
@@ -578,10 +593,64 @@
         <div class="seq-step" id="step-7">8</div>
     </div>
 
+    <!-- SUB OSCILLATOR PANEL -->
+    <div class="adsr-main-panel" style="border-color: rgba(255, 0, 127, 0.4); background: rgba(255, 0, 127, 0.02);">
+        <div class="adsr-control">
+            <div class="adsr-label" style="color:#00ffcc;">SUB WAVE</div>
+            <select id="subWave" onchange="applySubSettings()" style="width:100%; padding:3px; font-size:8px;">
+                <option value="sine" selected>Sine (Pure)</option>
+                <option value="triangle">Triangle (Warm)</option>
+                <option value="square">Square (Fat)</option>
+            </select>
+        </div>
+        <div class="adsr-control">
+            <div class="adsr-label" style="color:#00ffcc;">SUB OCTAVE</div>
+            <select id="subOctave" onchange="applySubSettings()" style="width:100%; padding:3px; font-size:8px;">
+                <option value="1">1 Oct (-1)</option>
+                <option value="2">2 Oct (-2)</option>
+                <option value="0.5">Unison (0)</option>
+            </select>
+        </div>
+        <div class="adsr-control">
+            <div class="adsr-label" style="color:#00ffcc;">SUB GAIN</div>
+            <input type="range" id="subGainRange" min="0" max="150" step="1" value="100" oninput="applySubSettings()">
+        </div>
+        <div class="adsr-control">
+            <div class="adsr-label" style="color:#00ffcc;">SUB SAT</div>
+            <input type="range" id="subSatRange" min="0" max="100" step="1" value="30" oninput="applySubSettings()">
+        </div>
+    </div>
+
+    <!-- NOISE OSCILLATOR PANEL -->
+    <div class="adsr-main-panel" style="border-color: rgba(0, 255, 204, 0.4); background: rgba(0, 255, 204, 0.02);">
+        <div class="adsr-control">
+            <div class="adsr-label" style="color:#00ffcc;">NOISE TYPE</div>
+            <select id="noiseType" onchange="applyNoiseSettings()" style="width:100%; padding:3px; font-size:8px;">
+                <option value="white" selected>White Noise</option>
+            </select>
+        </div>
+        <div class="adsr-control">
+            <div class="adsr-label" style="color:#00ffcc;">NOISE FILTER</div>
+            <select id="noiseFilterType" onchange="applyNoiseSettings()" style="width:100%; padding:3px; font-size:8px;">
+                <option value="bandpass" selected>Bandpass (Texture)</option>
+                <option value="lowpass">Lowpass (Air)</option>
+                <option value="highpass">Highpass (Hiss)</option>
+            </select>
+        </div>
+        <div class="adsr-control">
+            <div class="adsr-label" style="color:#00ffcc;">NOISE GAIN</div>
+            <input type="range" id="noiseGainRange" min="0" max="100" step="1" value="25" oninput="applyNoiseSettings()">
+        </div>
+        <div class="adsr-control">
+            <div class="adsr-label" style="color:#00ffcc;">NOISE CUTOFF</div>
+            <input type="range" id="noiseCutoffRange" min="200" max="10000" step="100" value="2000" oninput="applyNoiseSettings()">
+        </div>
+    </div>
+
     <div class="adsr-main-panel">
         <div class="adsr-control">
             <div class="adsr-label">CARRIER</div>
-            <select id="carrierWave" onchange="applyWaveforms()" style="width:100%; padding:4px; font-size:9px;">
+            <select id="carrierWave" onchange="applyWaveforms()" style="width:100%; padding:3px; font-size:8px;">
                 <option value="sawtooth">Saw</option>
                 <option value="square">Square</option>
                 <option value="sine">Sine</option>
@@ -590,7 +659,7 @@
         </div>
         <div class="adsr-control">
             <div class="adsr-label">MODULATOR</div>
-            <select id="modWave" onchange="applyWaveforms()" style="width:100%; padding:4px; font-size:9px;">
+            <select id="modWave" onchange="applyWaveforms()" style="width:100%; padding:3px; font-size:8px;">
                 <option value="sine">Sine</option>
                 <option value="sawtooth">Saw</option>
                 <option value="square">Square</option>
@@ -598,16 +667,16 @@
             </select>
         </div>
         <div class="adsr-control">
-            <div class="adsr-label">FM BITE TIME</div>
+            <div class="adsr-label">FM DECAY</div>
             <input type="range" id="fmEnvDecay" min="0.01" max="0.5" step="0.01" value="0.1" oninput="applyAdsrUI()">
         </div>
         <div class="adsr-control">
-            <div class="adsr-label">FM BITE AMT</div>
+            <div class="adsr-label">FM DEPTH</div>
             <input type="range" id="fmEnvDepth" min="0" max="1000" step="10" value="400" oninput="applyAdsrUI()">
         </div>
     </div>
 
-    <div class="adsr-main-panel" style="margin-top: -4px;">
+    <div class="adsr-main-panel">
         <div class="adsr-control">
             <div class="adsr-label">ATTACK</div>
             <input type="range" id="adsrA" min="0.001" max="0.5" step="0.001" value="0.01" oninput="applyAdsrUI()">
@@ -678,15 +747,15 @@
                 </div>
 
                 <div class="fx-card" style="grid-column: span 2;">
-                    <div class="fx-title" style="margin-bottom: 4px;">TIME SHAPER</div>
+                    <div class="fx-title" style="margin-bottom: 2px;">TIME SHAPER</div>
                     <div class="time-grid">
                         <button class="time-preset-btn active" data-mode="off" onclick="setTimeMode('off', this)">OFF</button>
-                        <button class="time-preset-btn" data-mode="halfspeed" onclick="setTimeMode('halfspeed', this)">1/2 SPEED</button>
-                        <button class="time-preset-btn" data-mode="tapestop" onclick="setTimeMode('tapestop', this)">TAPE STOP</button>
-                        <button class="time-preset-btn" data-mode="scratch" onclick="setTimeMode('scratch', this)">SCRATCH</button>
-                        <button class="time-preset-btn" data-mode="loop8" onclick="setTimeMode('loop8', this)">1/8 LOOP</button>
+                        <button class="time-preset-btn" data-mode="halfspeed" onclick="setTimeMode('halfspeed', this)">1/2 SPD</button>
+                        <button class="time-preset-btn" data-mode="tapestop" onclick="setTimeMode('tapestop', this)">TAPE</button>
+                        <button class="time-preset-btn" data-mode="scratch" onclick="setTimeMode('scratch', this)">SCR</button>
+                        <button class="time-preset-btn" data-mode="loop8" onclick="setTimeMode('loop8', this)">1/8 L</button>
                     </div>
-                    <input type="range" id="fTimeMix" min="0" max="100" value="100" oninput="applyFxUI()" style="margin-top: 10px;">
+                    <input type="range" id="fTimeMix" min="0" max="100" value="100" oninput="applyFxUI()" style="margin-top: 4px;">
                 </div>
             </div>
         </div>
@@ -698,18 +767,20 @@
                 <div class="preset-title">SAVED SOUNDS BANK</div>
                 <button class="btn-rnd-fx" onclick="togglePresetBrowser()" style="border-color: #ff007f; color: #ff007f;">✕ CLOSE</button>
             </div>
-            <div id="preset-list" style="display: flex; flex-direction: column; gap: 6px; margin-top: 8px;"></div>
+            <div id="preset-list" style="display: flex; flex-direction: column; gap: 4px; margin-top: 4px; overflow-y: auto;"></div>
         </div>
     </div>
 
     <div class="keyboard-container">
         <div class="keys-row" id="keys-row-top"></div>
+        <div class="keys-row" id="keys-row-mid"></div>
         <div class="keys-row" id="keys-row-bottom"></div>
     </div>
 
     <script>
-        let ctx, carrierOsc, modOsc, lfoOsc, subOsc;
-        let modGain, lfoGain, lpf, envGain;
+        let ctx, carrierOsc, modOsc, lfoOsc, subOsc, subGainNode, subLowpass, subDistNode;
+        let noiseNode, noiseBuffer, noiseGainNode, noiseFilterNode;
+        let modGain, lfoGain, lpf, envGain, highpassFilter;
         let preDistGain, distNode, eqNode, compNode, delayNode, delayGain, reverbNode, reverbGain;
         let hyperDelay, hyperGain, chorusDelay, phaserFilter;
         let timeDelayNode, timeDryGain, timeWetGain;
@@ -722,7 +793,6 @@
         let historyIndex = -1;
         let isMorphActive = false;
 
-        // Музыкальные настройки секвенсора
         let isSeqActive = false;
         let seqTimeout = null;
         let seqSteps = [];
@@ -756,7 +826,9 @@
             ratio: 1.0, index: 400, drive: 50, lfoRate: 3.0, bits: 8, delay: 20,
             hyper: 30, chorus: 25, phaser: 40, eqGain: 4, comp: 60, reverb: 15,
             timeMode: 'off', timeMix: 100, attack: 0.01, decay: 0.4, sustain: 0.7, release: 0.1,
-            carrierWave: 'sawtooth', modWave: 'sine', fmEnvDecay: 0.1, fmEnvDepth: 400
+            carrierWave: 'sawtooth', modWave: 'sine', fmEnvDecay: 0.1, fmEnvDepth: 400,
+            subWave: 'sine', subOctave: 1, subGain: 100, subSat: 30,
+            noiseType: 'white', noiseFilterType: 'bandpass', noiseGain: 25, noiseCutoff: 2000
         };
 
         function gatherCurrentParams() {
@@ -769,6 +841,16 @@
             p.modWave = document.getElementById('modWave').value;
             p.fmEnvDecay = parseFloat(document.getElementById('fmEnvDecay').value);
             p.fmEnvDepth = parseFloat(document.getElementById('fmEnvDepth').value);
+
+            p.subWave = document.getElementById('subWave').value;
+            p.subOctave = parseFloat(document.getElementById('subOctave').value);
+            p.subGain = parseInt(document.getElementById('subGainRange').value);
+            p.subSat = parseInt(document.getElementById('subSatRange').value);
+
+            p.noiseType = document.getElementById('noiseType').value;
+            p.noiseFilterType = document.getElementById('noiseFilterType').value;
+            p.noiseGain = parseInt(document.getElementById('noiseGainRange').value);
+            p.noiseCutoff = parseInt(document.getElementById('noiseCutoffRange').value);
 
             ['fLfo', 'fHyper', 'fDist', 'fBit', 'fChorus', 'fPhaser', 'fEqGain', 'fComp', 'fDly', 'fReverb', 'fTimeMix'].forEach(id => {
                 const key = id.replace('f', '').toLowerCase();
@@ -819,7 +901,7 @@
             let presets = JSON.parse(localStorage.getItem('neurobass_presets') || '[]');
             
             if (presets.length === 0) {
-                listEl.innerHTML = '<div style="color: rgba(255,255,255,0.4); text-align: center; font-size: 11px; padding: 20px;">No saved sounds yet. Click SAVE!</div>';
+                listEl.innerHTML = '<div style="color: rgba(255,255,255,0.4); text-align: center; font-size: 10px; padding: 15px;">No saved sounds yet. Click SAVE!</div>';
                 return;
             }
 
@@ -899,7 +981,6 @@
             }
         }
 
-        // Алгоритм музыкального построения фраз (Call & Response / Accents)
         function initSequencerSteps() {
             seqSteps = [];
             const scaleLen = activeScaleIndices.length;
@@ -908,27 +989,26 @@
             const fourthIdx = activeScaleIndices[Math.min(scaleLen - 1, 3)];
 
             for (let i = 0; i < 8; i++) {
-                let isRest = Math.random() < 0.18; // 18% вероятность паузы
+                let isRest = Math.random() < 0.18;
                 let noteIdx, octave = currentOctave;
                 let vel = 0.7;
 
-                // Музыкальная фразировка
                 if (i === 0) { 
-                    noteIdx = rootIdx; // Сильная доля -> Тоника
+                    noteIdx = rootIdx; 
                     vel = 1.0; 
                     isRest = false; 
                 } else if (i === 4) { 
-                    noteIdx = (Math.random() > 0.4) ? fifthIdx : rootIdx; // Ответ в центре
+                    noteIdx = (Math.random() > 0.4) ? fifthIdx : rootIdx; 
                     vel = 0.9; 
                     isRest = false;
                 } else if (i === 7) { 
-                    noteIdx = fourthIdx; // Вопросительное разрешение перед возвратом
+                    noteIdx = fourthIdx; 
                     vel = 0.8;
                 } else {
                     let randomScaleStep = activeScaleIndices[Math.floor(Math.random() * scaleLen)];
                     noteIdx = randomScaleStep;
                     vel = 0.4 + Math.random() * 0.4;
-                    if (Math.random() < 0.3) octave = currentOctave + 1; // Скачок октавы
+                    if (Math.random() < 0.3) octave = currentOctave + 1; 
                 }
 
                 let rhythm = rhythmicRatios[Math.floor(Math.random() * rhythmicRatios.length)];
@@ -978,7 +1058,6 @@
                 }, noteSoundingTime * 1000);
             }
 
-            // Добавляем микросвинг для 2-го и 6-го шагов (human groove)
             let swingOffset = (currentSeqStep % 2 === 1) ? 0.015 : 0.0;
             let stepDelay = (stepData.duration + swingOffset) * 1000;
 
@@ -1016,6 +1095,41 @@
             }
         }
 
+        function applySubSettings() {
+            p.subWave = document.getElementById('subWave').value;
+            p.subOctave = parseFloat(document.getElementById('subOctave').value);
+            p.subGain = parseInt(document.getElementById('subGainRange').value);
+            p.subSat = parseInt(document.getElementById('subSatRange').value);
+
+            if (isInit) {
+                subOsc.type = p.subWave;
+                subDistNode.curve = makeDistCurve(p.subSat, 12);
+            }
+        }
+
+        function createWhiteNoiseBuffer(context) {
+            let bufferSize = context.sampleRate * 2;
+            let buffer = context.createBuffer(1, bufferSize, context.sampleRate);
+            let output = buffer.getChannelData(0);
+            for (let i = 0; i < bufferSize; i++) {
+                output[i] = Math.random() * 2 - 1;
+            }
+            return buffer;
+        }
+
+        function applyNoiseSettings() {
+            p.noiseType = document.getElementById('noiseType').value;
+            p.noiseFilterType = document.getElementById('noiseFilterType').value;
+            p.noiseGain = parseInt(document.getElementById('noiseGainRange').value);
+            p.noiseCutoff = parseInt(document.getElementById('noiseCutoffRange').value);
+
+            if (isInit && ctx) {
+                let now = ctx.currentTime;
+                noiseFilterNode.type = p.noiseFilterType;
+                noiseFilterNode.frequency.setValueAtTime(p.noiseCutoff, now);
+            }
+        }
+
         function applyAdsrUI() {
             p.attack = parseFloat(document.getElementById('adsrA').value);
             p.decay = parseFloat(document.getElementById('adsrD').value);
@@ -1036,7 +1150,7 @@
         }
 
         function applyTimeShaperEffect() {
-            if (!isInit) return;
+            if (!isInit || !ctx) return;
             let now = ctx.currentTime;
             let mix = p.timeMix / 100;
 
@@ -1079,7 +1193,7 @@
         }
 
         function makeDistCurve(amount, bits) {
-            let n = 44100, curve = new Float32Array(n);
+            let n = 256, curve = new Float32Array(n);
             let step = Math.pow(0.5, bits);
             for (let i = 0; i < n; ++i) {
                 let x = (i * 2 / n) - 1;
@@ -1102,25 +1216,50 @@
             p.reverb = parseInt(document.getElementById('fReverb').value);
             p.timeMix = parseInt(document.getElementById('fTimeMix').value);
 
-            if (isInit) {
-                lfoOsc.frequency.setValueAtTime(p.lfoRate, ctx.currentTime);
-                hyperGain.gain.setValueAtTime(p.hyper / 150, ctx.currentTime);
+            if (isInit && ctx) {
+                let now = ctx.currentTime;
+                
+                lfoOsc.frequency.cancelScheduledValues(now);
+                lfoOsc.frequency.setValueAtTime(p.lfoRate, now);
+                
+                hyperGain.gain.cancelScheduledValues(now);
+                hyperGain.gain.setValueAtTime(p.hyper / 150, now);
+                
                 distNode.curve = makeDistCurve(p.drive, p.bits);
-                preDistGain.gain.setValueAtTime(1 + (p.drive / 20), ctx.currentTime);
-                chorusDelay.delayTime.setValueAtTime(0.01 + (p.chorus / 2000), ctx.currentTime);
-                phaserFilter.frequency.setValueAtTime(400 + (p.phaser * 20), ctx.currentTime);
-                eqNode.gain.setValueAtTime(p.eqGain, ctx.currentTime);
-                compNode.threshold.setValueAtTime(-(p.comp * 0.4), ctx.currentTime);
-                delayGain.gain.setValueAtTime(p.delay / 100, ctx.currentTime);
-                reverbGain.gain.setValueAtTime(p.reverb / 100, ctx.currentTime);
+                
+                preDistGain.gain.cancelScheduledValues(now);
+                preDistGain.gain.setValueAtTime(1 + (p.drive / 20), now);
+                
+                chorusDelay.delayTime.cancelScheduledValues(now);
+                chorusDelay.delayTime.setValueAtTime(0.01 + (p.chorus / 2000), now);
+                
+                phaserFilter.frequency.cancelScheduledValues(now);
+                phaserFilter.frequency.setValueAtTime(400 + (p.phaser * 20), now);
+                
+                eqNode.gain.cancelScheduledValues(now);
+                eqNode.gain.setValueAtTime(p.eqGain, now);
+                
+                compNode.threshold.cancelScheduledValues(now);
+                compNode.threshold.setValueAtTime(-(p.comp * 0.4), now);
+                
+                delayGain.gain.cancelScheduledValues(now);
+                delayGain.gain.setValueAtTime(p.delay / 100, now);
+                
+                reverbGain.gain.cancelScheduledValues(now);
+                reverbGain.gain.setValueAtTime(p.reverb / 100, now);
+                
                 applyTimeShaperEffect();
             }
-            document.getElementById('patch-info').innerText = `FM 1:${p.ratio} | LFO: ${p.lfoRate}Hz`;
+            document.getElementById('patch-info').innerText = `FM 1:${p.ratio} | SUB: ON | NOISE: ON`;
         }
 
         function generatePatch() {
             const ratios = [0.5, 1.0, 1.41, 2.0, 3.0, 4.0, 5.5, 7.0];
             const waves = ['sawtooth', 'square', 'sine', 'triangle'];
+            const subWaves = ['sine', 'triangle', 'square'];
+            const subOcts = [1, 2, 0.5];
+            const noiseFilters = ['bandpass', 'lowpass', 'highpass'];
+
             const newPatch = {
                 ratio: ratios[Math.floor(Math.random() * ratios.length)],
                 index: Math.floor(200 + Math.random() * 800),
@@ -1137,7 +1276,15 @@
                 carrierWave: waves[Math.floor(Math.random() * waves.length)],
                 modWave: waves[Math.floor(Math.random() * waves.length)],
                 fmEnvDecay: parseFloat((0.02 + Math.random() * 0.25).toFixed(2)),
-                fmEnvDepth: Math.floor(100 + Math.random() * 800)
+                fmEnvDepth: Math.floor(100 + Math.random() * 800),
+                subWave: subWaves[Math.floor(Math.random() * subWaves.length)],
+                subOctave: subOcts[Math.floor(Math.random() * subOcts.length)],
+                subGain: Math.floor(60 + Math.random() * 80),
+                subSat: Math.floor(10 + Math.random() * 60),
+                noiseType: 'white',
+                noiseFilterType: noiseFilters[Math.floor(Math.random() * noiseFilters.length)],
+                noiseGain: Math.floor(10 + Math.random() * 50),
+                noiseCutoff: Math.floor(500 + Math.random() * 5000)
             };
 
             patchHistory = patchHistory.slice(0, historyIndex + 1);
@@ -1167,8 +1314,20 @@
             document.getElementById('fmEnvDecay').value = p.fmEnvDecay || 0.1;
             document.getElementById('fmEnvDepth').value = p.fmEnvDepth || 400;
 
+            if (p.subWave !== undefined) document.getElementById('subWave').value = p.subWave;
+            if (p.subOctave !== undefined) document.getElementById('subOctave').value = p.subOctave;
+            if (p.subGain !== undefined) document.getElementById('subGainRange').value = p.subGain;
+            if (p.subSat !== undefined) document.getElementById('subSatRange').value = p.subSat;
+
+            if (p.noiseType !== undefined) document.getElementById('noiseType').value = p.noiseType;
+            if (p.noiseFilterType !== undefined) document.getElementById('noiseFilterType').value = p.noiseFilterType;
+            if (p.noiseGain !== undefined) document.getElementById('noiseGainRange').value = p.noiseGain;
+            if (p.noiseCutoff !== undefined) document.getElementById('noiseCutoffRange').value = p.noiseCutoff;
+
             setTimeMode(p.timeMode || 'off');
             applyWaveforms();
+            applySubSettings();
+            applyNoiseSettings();
             applyFxUI();
         }
 
@@ -1192,21 +1351,30 @@
         function renderKeyboard() {
             const root = parseInt(document.getElementById('rootSelect').value);
             const topRow = document.getElementById('keys-row-top');
+            const midRow = document.getElementById('keys-row-mid');
             const bottomRow = document.getElementById('keys-row-bottom');
             
-            topRow.innerHTML = ''; bottomRow.innerHTML = '';
+            topRow.innerHTML = ''; 
+            midRow.innerHTML = ''; 
+            bottomRow.innerHTML = '';
 
             activeScaleIndices.forEach((idx) => {
                 const btnTop = document.createElement('div');
                 btnTop.className = 'key' + (idx === root ? ' root' : '');
-                btnTop.innerText = noteNames[idx];
-                bindKeyEvents(btnTop, idx, currentOctave);
+                btnTop.innerText = noteNames[idx] + '++';
+                bindKeyEvents(btnTop, idx, currentOctave + 2);
                 topRow.appendChild(btnTop);
+
+                const btnMid = document.createElement('div');
+                btnMid.className = 'key' + (idx === root ? ' root' : '');
+                btnMid.innerText = noteNames[idx] + '+';
+                bindKeyEvents(btnMid, idx, currentOctave + 1);
+                midRow.appendChild(btnMid);
 
                 const btnBottom = document.createElement('div');
                 btnBottom.className = 'key' + (idx === root ? ' root' : '');
-                btnBottom.innerText = noteNames[idx] + '+';
-                bindKeyEvents(btnBottom, idx, currentOctave + 1);
+                btnBottom.innerText = noteNames[idx];
+                bindKeyEvents(btnBottom, idx, currentOctave);
                 bottomRow.appendChild(btnBottom);
             });
         }
@@ -1236,9 +1404,37 @@
             ctx = new (window.AudioContext || window.webkitAudioContext)();
             carrierOsc = ctx.createOscillator(); modOsc = ctx.createOscillator();
             lfoOsc = ctx.createOscillator(); subOsc = ctx.createOscillator();
-            modGain = ctx.createGain(); lfoGain = ctx.createGain(); lpf = ctx.createBiquadFilter(); envGain = ctx.createGain();
+            
+            subGainNode = ctx.createGain();
+            subLowpass = ctx.createBiquadFilter();
+            subLowpass.type = "lowpass";
+            subLowpass.frequency.value = 140; 
+            subLowpass.Q.value = 1;
+
+            subDistNode = ctx.createWaveShaper();
+            subDistNode.oversample = 'none';
+
+            noiseGainNode = ctx.createGain();
+            noiseFilterNode = ctx.createBiquadFilter();
+            noiseFilterNode.type = p.noiseFilterType || "bandpass";
+            noiseFilterNode.frequency.value = p.noiseCutoff || 2000;
+            noiseFilterNode.Q.value = 2;
+
+            noiseBuffer = createWhiteNoiseBuffer(ctx);
+            noiseNode = ctx.createBufferSource();
+            noiseNode.buffer = noiseBuffer;
+            noiseNode.loop = true;
+            noiseNode.start();
+
+            modGain = ctx.createGain(); lfoGain = ctx.createGain(); 
+            lpf = ctx.createBiquadFilter(); envGain = ctx.createGain();
+            
+            highpassFilter = ctx.createBiquadFilter();
+            highpassFilter.type = "highpass";
+            highpassFilter.frequency.value = 15;
+
             hyperDelay = ctx.createDelay(); hyperDelay.delayTime.value = 0.012; hyperGain = ctx.createGain();
-            preDistGain = ctx.createGain(); distNode = ctx.createWaveShaper(); distNode.oversample = '4x';
+            preDistGain = ctx.createGain(); distNode = ctx.createWaveShaper(); distNode.oversample = 'none';
             chorusDelay = ctx.createDelay(); phaserFilter = ctx.createBiquadFilter(); phaserFilter.type = "allpass";
             eqNode = ctx.createBiquadFilter(); eqNode.type = "peaking"; eqNode.frequency.value = 250;
             compNode = ctx.createDynamicsCompressor(); compNode.knee.value = 0; compNode.ratio.value = 12; compNode.attack.value = 0.003;
@@ -1248,13 +1444,25 @@
             mainGain = ctx.createGain();
 
             applyWaveforms();
-            lfoOsc.type = 'sine'; subOsc.type = 'sine';
+            applySubSettings();
+            applyNoiseSettings();
+            lfoOsc.type = 'sine'; 
             lpf.type = 'lowpass'; lpf.Q.value = 4;
 
             lfoOsc.connect(lfoGain); lfoGain.connect(modGain.gain);
             modOsc.connect(modGain); modGain.connect(carrierOsc.frequency);
-            carrierOsc.connect(lpf); subOsc.connect(lpf); lpf.connect(envGain);
             
+            carrierOsc.connect(lpf); lpf.connect(envGain);
+            
+            subOsc.connect(subLowpass);
+            subLowpass.connect(subDistNode);
+            subDistNode.connect(subGainNode);
+            subGainNode.connect(compNode);
+
+            noiseNode.connect(noiseFilterNode);
+            noiseFilterNode.connect(noiseGainNode);
+            noiseGainNode.connect(compNode);
+
             envGain.connect(hyperDelay); hyperDelay.connect(hyperGain); hyperGain.connect(phaserFilter); envGain.connect(phaserFilter);
             phaserFilter.connect(chorusDelay); chorusDelay.connect(eqNode); phaserFilter.connect(eqNode);
             eqNode.connect(preDistGain); preDistGain.connect(distNode); distNode.connect(compNode);
@@ -1264,11 +1472,15 @@
             
             compNode.connect(delayNode); delayNode.connect(delayGain); delayGain.connect(mainGain);
             compNode.connect(reverbNode); reverbNode.connect(reverbGain); reverbGain.connect(mainGain);
-            mainGain.connect(ctx.destination);
+            
+            mainGain.connect(highpassFilter);
+            highpassFilter.connect(ctx.destination);
 
             carrierOsc.start(); modOsc.start(); lfoOsc.start(); subOsc.start();
 
             envGain.gain.setValueAtTime(0, ctx.currentTime);
+            subGainNode.gain.setValueAtTime(0, ctx.currentTime);
+            noiseGainNode.gain.setValueAtTime(0, ctx.currentTime);
             mainGain.gain.value = 0.35;
             isInit = true;
             
@@ -1293,53 +1505,85 @@
             carrierOsc.frequency.cancelScheduledValues(now); modOsc.frequency.cancelScheduledValues(now); subOsc.frequency.cancelScheduledValues(now);
             carrierOsc.frequency.setValueAtTime(f, now); modOsc.frequency.setValueAtTime(f * p.ratio, now);
             
-            // Динамический фильтр и FM depth от Velocity
+            subOsc.frequency.setValueAtTime(f / p.subOctave, now);
+
             let velModifier = 0.3 + (currentVel * 0.7);
             let baseModDepth = f * (p.index / 100) * velModifier;
-            let biteDepth = baseModDepth + (p.fmEnvDepth * 2 * velModifier);
             
             modGain.gain.cancelScheduledValues(now);
-            modGain.gain.setValueAtTime(biteDepth, now);
+            modGain.gain.setValueAtTime(modGain.gain.value, now);
             modGain.gain.exponentialRampToValueAtTime(Math.max(10, baseModDepth), now + p.fmEnvDecay);
 
-            // Динамика фильтра Cutoff от акцента
             lpf.frequency.cancelScheduledValues(now);
             lpf.frequency.setValueAtTime(lpf.frequency.value, now);
             lpf.frequency.linearRampToValueAtTime(Math.min(12000, 200 + (8000 * velModifier)), now + 0.05);
 
             lfoGain.gain.setValueAtTime(f * (p.index / 200), now); 
             lfoOsc.frequency.setValueAtTime(p.lfoRate, now); 
-            subOsc.frequency.setValueAtTime(f / 2, now);
 
             envGain.gain.cancelScheduledValues(now);
             envGain.gain.setValueAtTime(envGain.gain.value, now);
             
+            subGainNode.gain.cancelScheduledValues(now);
+            subGainNode.gain.setValueAtTime(subGainNode.gain.value, now);
+
+            noiseGainNode.gain.cancelScheduledValues(now);
+            noiseGainNode.gain.setValueAtTime(noiseGainNode.gain.value, now);
+
             let dynamicAttack = p.attack * (1.2 - currentVel * 0.4);
             envGain.gain.linearRampToValueAtTime(currentVel, now + dynamicAttack);
             envGain.gain.linearRampToValueAtTime(p.sustain * currentVel, now + dynamicAttack + p.decay);
+
+            let targetSubVol = (p.subGain / 100) * currentVel;
+            subGainNode.gain.linearRampToValueAtTime(targetSubVol, now + dynamicAttack);
+            subGainNode.gain.linearRampToValueAtTime(targetSubVol * p.sustain, now + dynamicAttack + p.decay);
+
+            let targetNoiseVol = (p.noiseGain / 100) * currentVel * 0.4;
+            noiseGainNode.gain.linearRampToValueAtTime(targetNoiseVol, now + dynamicAttack);
+            noiseGainNode.gain.linearRampToValueAtTime(targetNoiseVol * p.sustain, now + dynamicAttack + p.decay);
         }
 
         function stopMonoNote() {
             if (!isInit) return;
             let now = ctx.currentTime;
+            
             envGain.gain.cancelScheduledValues(now);
             envGain.gain.setValueAtTime(envGain.gain.value, now);
-            envGain.gain.linearRampToValueAtTime(0.0, now + p.release);
+            
+            subGainNode.gain.cancelScheduledValues(now);
+            subGainNode.gain.setValueAtTime(subGainNode.gain.value, now);
+
+            noiseGainNode.gain.cancelScheduledValues(now);
+            noiseGainNode.gain.setValueAtTime(noiseGainNode.gain.value, now);
+
+            let releaseTime = Math.max(0.01, p.release);
+            envGain.gain.linearRampToValueAtTime(0.0001, now + releaseTime);
+            subGainNode.gain.linearRampToValueAtTime(0.0001, now + releaseTime);
+            noiseGainNode.gain.linearRampToValueAtTime(0.0001, now + releaseTime);
+
+            modGain.gain.cancelScheduledValues(now);
+            modGain.gain.setValueAtTime(modGain.gain.value, now);
+            modGain.gain.linearRampToValueAtTime(0.001, now + releaseTime);
         }
 
         function updateOctaveDisplay() {
             const rootName = noteNames[parseInt(document.getElementById('rootSelect').value)];
-            document.getElementById('oct-display').innerText = `${rootName}${currentOctave}-${rootName}${currentOctave + 1}`;
+            document.getElementById('oct-display').innerText = `${rootName}${currentOctave}-${rootName}${currentOctave + 2}`;
         }
 
         function changeOctave(dir) {
-            currentOctave = Math.max(0, Math.min(6, currentOctave + dir));
+            currentOctave = Math.max(0, Math.min(5, currentOctave + dir));
             updateOctaveDisplay(); renderKeyboard();
             if (isSeqActive) initSequencerSteps();
         }
 
         const pad = document.getElementById('xy');
+        let lastMoveTime = 0;
         function handlePointerMove(e) {
+            let nowTime = Date.now();
+            if (nowTime - lastMoveTime < 16) return;
+            lastMoveTime = nowTime;
+
             if (!isInit) return;
             let rect = pad.getBoundingClientRect();
             
@@ -1371,15 +1615,12 @@
         pad.addEventListener('pointerdown', (e) => { pad.setPointerCapture(e.pointerId); handlePointerMove(e); });
         pad.addEventListener('pointermove', (e) => { if (e.buttons === 1 || e.pressure > 0 || e.touches) handlePointerMove(e); });
         pad.addEventListener('pointerup', (e) => { if (e.touches && e.touches.length === 0) setMorph(false); });
-        pad.addEventListener('touchstart', handlePointerMove, {passive: true});
-        pad.addEventListener('touchmove', handlePointerMove, {passive: true});
-        pad.addEventListener('touchend', (e) => { if(e.touches.length === 0) setMorph(false); }, {passive: true});
 
         function exportToAbleton() {
             gatherCurrentParams();
             const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <Ableton MajorVersion="5" MinorVersion="11.0_10100" SchemaChangeCount="3" Creator="Ableton Live 11.0">
-    <OperatorPreset><Name Value="NeuroBass_FX"/><Operator>
+    <OperatorPreset><Name Value="NeuroBass_Sub_Noise"/><Operator>
         <Algorithm Value="0"/><OscillatorA><Waveform Value="1"/><Coarse Value="1"/><Volume Value="0"/></OscillatorA>
         <OscillatorB><Waveform Value="0"/><Coarse Value="${p.ratio}"/><Volume Value="${Math.min(0, Math.round((p.index/800)*32-32))}"/></OscillatorB>
         <Filter><Type Value="0"/><Cutoff Value="${lpf ? Math.round(lpf.frequency.value) : 2000}"/><Resonance Value="0.4"/></Filter>
@@ -1388,11 +1629,21 @@
 </Ableton>`;
             try {
                 const compressed = pako.gzip(xml);
-                const a = document.createElement('a');
-                a.href = URL.createObjectURL(new Blob([compressed], { type: 'application/octet-stream' }));
-                a.download = `NeuroBass_FX_${p.ratio}x.adv`;
+                const bytes = new Uint8Array(compressed);
+                let binary = '';
+                for (let i = 0; i < bytes.byteLength; i++) {
+                    binary += String.fromCharCode(bytes[i]);
+                }
+                const base64 = btoa(binary);
+                const dataUrl = 'data:application/octet-stream;base64,' + base64;
+                
+                let a = document.createElement('a');
+                a.href = dataUrl;
+                a.download = `NeuroBass_Sub_Noise_${p.ratio}x.adv`;
                 a.click();
-            } catch (err) { alert('Ошибка генерации: ' + err); }
+            } catch (err) { 
+                alert('Ошибка генерации: ' + err); 
+            }
         }
 
         updateScale();
